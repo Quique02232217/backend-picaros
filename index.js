@@ -4,6 +4,8 @@ require("dotenv").config();
 const sequelize = require("./config/database");
 const productRoutes = require("./routes/productRoutes");
 const errorHandler = require("./utils/errorHandler");
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./docs/configSwagger");
 
 const app = express();
 
@@ -11,7 +13,8 @@ app.use(cors());
 app.use(express.json());
 
 // Load routes (we’ll create them next)
-app.use("/api/products", productRoutes);
+app.use("/products", productRoutes);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(errorHandler);
 
 sequelize

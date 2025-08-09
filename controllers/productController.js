@@ -9,7 +9,7 @@ const getAllProducts = catchAsync(async (req, res) => {
 });
 
 const getProductById = catchAsync(async (req, res) => {
-  const product = await productService.getProductById(req.params.id);
+  const product = await productService.getProductsById(req.params.id);
   res.json(product);
 });
 
