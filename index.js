@@ -3,17 +3,20 @@ const cors = require("cors");
 require("dotenv").config();
 const sequelize = require("./config/database");
 const productRoutes = require("./routes/productRoutes");
-const errorHandler = require("./utils/errorHandler");
+const customerRoutes = require("./routes/customerRoutes");
+const configRoutes = require("./routes/configRoutes");
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./docs/configSwagger");
-
+const errorHandler = require("./utils/errorHandler");
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
 // Load routes (we’ll create them next)
+app.use("/customers", customerRoutes);
 app.use("/products", productRoutes);
+app.use("/config", configRoutes);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(errorHandler);
 

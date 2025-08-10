@@ -12,7 +12,7 @@ const Customer = sequelize.define(
     name_customers: DataTypes.STRING,
     phone_customers: DataTypes.STRING,
     address: DataTypes.STRING,
-    create_at: DataTypes.DATE,
+    created_at: DataTypes.DATE,
   },
   {
     tableName: "customers",

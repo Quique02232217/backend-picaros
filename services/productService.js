@@ -7,7 +7,7 @@ const getAllProducts = async () => {
 
 const getProductsById = async (id) => {
   const product = await Product.findByPk(id);
-  if (!product) throw new ApiError(404, "Producto no encontrado");
+  if (!product) throw new ApiError(404, "Product not found");
   return product;
 };
 
@@ -17,7 +17,7 @@ const createProduct = async (data) => {
 
 const updateProduct = async (id, data) => {
   const product = await Product.findByPk(id);
-  if (!product) throw new ApiError(404, "Producto no encontrado");
+  if (!product) throw new ApiError(404, "Product not found");
   await product.update(data);
   return product;
 };
