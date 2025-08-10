@@ -5,6 +5,8 @@ const sequelize = require("./config/database");
 const productRoutes = require("./routes/productRoutes");
 const customerRoutes = require("./routes/customerRoutes");
 const configRoutes = require("./routes/configRoutes");
+const userRoutes = require("./routes/userRoutes");
+const saleRoutes = require("./routes/saleRoutes");
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./docs/configSwagger");
 const errorHandler = require("./utils/errorHandler");
@@ -15,6 +17,8 @@ app.use(express.json());
 
 // Load routes (we’ll create them next)
 app.use("/customers", customerRoutes);
+app.use("/sales", saleRoutes);
+app.use("/users", userRoutes);
 app.use("/products", productRoutes);
 app.use("/config", configRoutes);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));

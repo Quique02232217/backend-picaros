@@ -34,4 +34,14 @@ const Sale = sequelize.define(
   }
 );
 
+Sale.belongsTo(User, {
+  foreignKey: "id_user",
+  as: "user",
+});
+
+Sale.belongsTo(Customer, {
+  foreignKey: "id_customer",
+  as: "customer",
+});
+
 module.exports = Sale;
